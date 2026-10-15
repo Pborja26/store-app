@@ -1,6 +1,5 @@
 from django.contrib import admin
 from person import models
-from utils.admin import BaseModelAdmin
 # Register your models here.
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
