@@ -73,6 +73,14 @@ SIMPLE_JWT = {
     'TOKEN_OBTAIN_SERIALIZER': 'person.serializers.LoginSerializer',
 }
 
+REFRESH_COOKIE = {
+    'key': 'refresh_token',
+    'httponly': True,          # o JavaScript não consegue ler
+    'secure': not DEBUG,       # só é enviado por HTTPS em produção
+    'samesite': 'Strict',      # não é enviado por outros sites (protege contra CSRF)
+    'path': '/api/person/',      # só é enviado para as rotas de auth
+}
+
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [

@@ -13,6 +13,7 @@ class TimeStampedModel(models.Model):
         return str(self.pk)
 
 class BaseAuditModel(TimeStampedModel):
+    active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(class)s_created_by", help_text="User who created the record.")
     updated_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(class)s_updated_by", help_text="User who last updated the record.")
 
